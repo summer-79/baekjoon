@@ -4,7 +4,7 @@
 import java.util.Scanner;
 import java.lang.Math;
 
-public class bj1550 {
+public class Main {
     public static void main(String [] args){
         int deci = 0;
         Scanner scanner = new Scanner(System.in);
