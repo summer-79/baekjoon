@@ -20,13 +20,20 @@ public class bj1654 {
             sum += lan[i];
         }
         min = (long)(sum/k);
-        for(res = min; res>0; res--){
-            sum = 0;
-            for(j = 0; j<n; j++)
-                sum += (long)(lan[j]/res);
-
-            if(sum >= k) break;
+        long left, right, mid=1;
+        left = 0l; right = min;
+        try{
+            while(left<=right){
+                sum = 0;
+                mid = (left+right)/2;
+                for(j = 0; j<n; j++)
+                    sum += (long)(lan[j]/mid);
+                if(sum < k) right = mid-1;
+                else left = mid+1;
+            }
+        }catch(Exception e){
+            System.out.print("");
         }
-        System.out.println(res);
+        System.out.println(right);
     }
 }
