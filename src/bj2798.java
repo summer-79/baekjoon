@@ -14,23 +14,29 @@ N장의 카드에 써져 있는 숫자가 주어졌을 때, M을 넘지 않으�
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class bj2798 {
-    public static void main(String [] args){
+public class Main {
+    public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
-        int n, m, i, j, k, min=999, idx=-1;
+        int n, m, i, j, k, sum=-1, min = -999999999;
         n = s.nextInt();
         m = s.nextInt();
-        int [] arr = new int[n];
+        int[] arr = new int[n];
 
-        for(i = 0; i< n; i++)
+        for (i = 0; i < n; i++)
             arr[i] = s.nextInt();
 
         Arrays.sort(arr);
-        for(i = 0; i<n-2;i++){
-            for(j = 0; j<n-1; j++){
-                for(k = 0; k<n; k++){
-
+        for (i = 0; i < n-2; i++) {
+            for (j = i+1; j < n-1; j++) {
+                for (k = j+1; k < n; k++) {
+                    sum = (arr[i] + arr[j] + arr[k])-m;
+                    if(min < sum && sum <= 0) {
+                        min = sum;
+                        if(sum == 0) break;
+                    }
                 }
             }
         }
+        System.out.println(m+min);
+    }
 }
